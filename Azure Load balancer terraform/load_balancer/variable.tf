@@ -18,3 +18,18 @@ variable "load_balancers" {
     lb_rule_frontend_ip_config = string
   }))
 }
+
+variable "autoscale_settings" {
+  description = "Autoscaling settings for Azure Load Balancer"
+  type        = list(object({
+    name                = string
+    resource_group_name = string
+    location            = string
+    target_resource_id  = string
+    cpu_threshold       = number
+    scale_up_value      = number
+    scale_down_value    = number
+    scale_up_cooldown   = string
+    scale_down_cooldown = string
+  }))
+}
